@@ -1,0 +1,144 @@
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <a ui-sref="panel">Inicio</a>
+        </li>
+        <li>
+            <a ui-sref="panel.auditorias" >Auditorias</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+                <h2><i class="glyphicon glyphicon-info-sign"></i> Auditorias</h2>
+
+                <div class="box-icon">
+                    <!--
+                    <a href="#" class="btn btn-close btn-round btn-default"><i
+                            class="glyphicon glyphicon-remove"></i></a>
+                    -->
+                </div>
+            </div>
+            <div class="box-content row">
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<button  class="btn btn-primary" ng-click="vercrearauditorias()">Crear</button>
+    
+    <div ng-show="vermostrandocrarauditorias" class="panel panel-warning">
+      <div class="panel-heading">Ingrese  los datos de Auditorias en los campos correspodientes</div>
+         <form ng-submit="Insertentidadauditoria(auditoria_crear)">
+
+          <div>
+            <input  required="required" required="required" type="date" class="form-control"  placeholder="Fecha " ng-model="auditoria_crear.fecha">
+          </div>
+          <div>
+            <input required="required" type="time"  class="form-control" placeholder="Hora" ng-model="auditoria_crear.hora">
+          </div>
+          <div>  
+            <select  class="form-control selcls"  ng-model="auditoria_crear.entidad">
+              <optgroup required="required" label="Entidad:"> <option ng-repeat="entidad in entidades" value="{{entidad.rowid}}" >{{entidad.nombres}} {{entidad.alias}}</option></optgroup>
+
+          </select>
+          </div>
+
+          <div>
+             <input class="btn btn-primary  btn-block" type="submit" name="" value="Crear Auditoria">
+          </div>
+           
+            
+           
+        </form>
+    </div>
+
+
+
+   
+
+
+<table class="table">
+  <thead>
+
+
+    <tr >
+      <th scope="col">ID </th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Hora</th>
+      <th scope="col">Entidad</th>
+
+    </tr>
+
+
+    <tr ng-repeat="auditoria in auditorias"  >
+      
+      <td  >{{auditoria.rowid}}</td>
+      <td >{{auditoria.fecha }}</td>
+      <td>{{auditoria.hora}}</td>
+      <td >{{auditoria.nombres +  ' '  + auditoria.alias}}</td>
+     
+      <td scope="col" class=" glyphicon glyphicon-pencil btn btn-primary" href="" ng-click="veractuauditoria(auditoria)"></td>
+      <td scope="col" class="glyphicon glyphicon-remove btn btn-danger " href="" ng-click="elimninaradutiroiar(auditoria)" ></td>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+  
+   
+  </tbody>
+</table>
+
+
+<div ng-show="modusers">
+    <h2>Modificar Auditoria</h2>
+    <form ng-submit="actusersauditoria(auditoria_editars)">
+
+      <table style="width: 100%;">
+        
+         <tr> 
+            <td >Fecha</td>
+            <td><input class="form-control" type="date" placeholder="Nombre" ng-model="auditoria_editars.fecha"></td>
+         </tr> 
+
+        <tr>
+          <td >Hora</td>
+          <td><input class="form-control col-lg-2" type="time" placeholder="apellidos" ng-model="auditoria_editars.hora"></td>
+        </tr>
+
+        <tr>
+          <td >Entidad</td>
+          <td> <select  class="form-control selcls"  ng-model="auditoria_editars.entidad">>
+                <optgroup  label="Entidad:"> <option ng-repeat="entidad in entidades" value="{{entidad.rowid}}" >{{entidad.nombres}} {{entidad.alias}}</option></optgroup>
+
+            </select></td>
+          <td></td>
+        </tr>
+      
+     </table>
+
+
+     
+
+     
+     
+      
+
+      <div>
+        <input class="btn btn-primary  btn-block" type="submit" name="" value="Actualizar Auditoria">
+      </div>
+      
+      
+      
+      
+    </form>
+  </div>
+            
+          

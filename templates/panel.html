@@ -1,0 +1,175 @@
+
+<!-- topbar starts -->
+
+
+   <div class="navbar navbar-default" role="navigation">
+
+        <div class="navbar-inner">
+            <button type="button" class="navbar-toggle pull-left animated flip">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"> <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/>
+                <span>Auditoría</span></a>
+
+            <!-- user dropdown starts -->
+            <div class="btn-group pull-right">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </div>
+            <!-- user dropdown ends -->
+
+            <!-- theme selector starts -->
+            <div class="btn-group pull-right theme-container animated tada">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-tint"></i><span
+                        class="hidden-sm hidden-xs"> Change Theme / Skin</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="themes">
+                    <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
+                    <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>
+                    <li><a data-value="cyborg" href="#"><i class="whitespace"></i> Cyborg</a></li>
+                    <li><a data-value="simplex" href="#"><i class="whitespace"></i> Simplex</a></li>
+                    <li><a data-value="darkly" href="#"><i class="whitespace"></i> Darkly</a></li>
+                    <li><a data-value="lumen" href="#"><i class="whitespace"></i> Lumen</a></li>
+                    <li><a data-value="slate" href="#"><i class="whitespace"></i> Slate</a></li>
+                    <li><a data-value="spacelab" href="#"><i class="whitespace"></i> Spacelab</a></li>
+                    <li><a data-value="united" href="#"><i class="whitespace"></i> United</a></li>
+                </ul>
+            </div>
+            <!-- theme selector ends -->
+
+            <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+                
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"><i class="glyphicon glyphicon-star"></i> Dropdown <span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <form class="navbar-search pull-left">
+                        <input placeholder="Buscar" class="search-query form-control col-md-10" name="query"
+                               type="text">
+                    </form>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- topbar ends -->
+
+
+
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- MENU IZQUIERDO starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+                        <li class="nav-header">Menú</li>
+                        <li><a class="ajax-link" ui-sref="panel"><i class="glyphicon glyphicon-home"></i><span> Inicio</span></a></li>
+                        
+                        <li><a class="ajax-link" ui-sref="panel.entidades">
+                            <i class="glyphicon glyphicon-align-justify"></i><span> Entidades</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="" ui-sref="panel.usuarios">
+                            <i class="glyphicon glyphicon-user"></i><span> Usuarios</span></a>
+                        </li>
+                         <li><a class="ajax-link" href="" ui-sref="panel.auditorias">
+                            <i class="glyphicon glyphicon-book"></i><span> auditorias</span></a>
+                        </li>
+
+                        <li><a class="ajax-link" href="" ui-sref="panel.preguntas">
+                            <i class="glyphicon glyphicon-tags"></i><span> Preguntas</span></a>
+                        </li>
+                        
+
+                        <li><a class="ajax-link" href="" ui-sref="panel.respuestas">
+                            <i class="glyphicon glyphicon-file"></i><span> Respuestas</span></a>
+                        </li>
+                         
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+        <!-- left menu ends -->
+
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">¡Atención!</h4>
+
+                <p>Necesitas tener <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    habilitado para usar este sitio.</p>
+            </div>
+        </noscript>
+
+
+
+
+
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            
+            <ui-view>
+
+                <div>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a ui-sref="panel">Inicio</a>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </ui-view>
+
+          
+
+        </div><!--/#content.col-md-0-->
+
+
+
+
+
+
+
+    </div><!--/fluid-row-->
+
+
+    <hr>
+
+
+    <footer class="row">
+        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; 
+            <a href=# target="_blank">Auditoría de iglesias</a> 2018</p>
+
+        <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Creado por: <a
+                href="https://www.lalvirtual.edu.co">Liceo Adventista Libertad</a></p>
+    </footer>
+
+</div><!--/.fluid-container-->

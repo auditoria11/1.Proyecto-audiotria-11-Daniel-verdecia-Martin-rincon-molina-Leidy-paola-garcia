@@ -1,0 +1,152 @@
+<!-- content starts -->
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <a ui-sref="panel">Inicio</a>
+        </li>
+        <li>
+            <a ui-sref="panel.entidades" >Entidades</a>
+        </li>
+    </ul>
+</div>
+
+
+
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+                <h2><i class="glyphicon glyphicon-info-sign"></i> Entidades</h2>
+
+                <div class="box-icon">
+                    <!--
+                    <a href="#" class="btn btn-close btn-round btn-default"><i
+                            class="glyphicon glyphicon-remove"></i></a>
+                    -->
+                </div>
+            </div>
+            <div class="box-content row">
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-primary" ng-click="crearI()">Crear</button>
+
+    <div ng-show="vercrear" class="panel panel-warning"> 
+      <div class="panel-heading">Ingrese  los datos de Entidades en los campos correspodientes</div>
+    
+        <form   ng-submit="Insertentidad(entidad_crear)">
+          <div >
+             <input  required="required" class="form-control" type="text" placeholder="Nombre" ng-model="entidad_crear.nombres">
+          </div>
+
+           <div>
+               <input required="required" class="form-control" type="text" placeholder="Alias" ng-model="entidad_crear.alias">
+           </div>
+
+           <div>
+             <input required="required" class="form-control" type="text" placeholder="Pastor" ng-model="entidad_crear.pastor">
+           </div>
+          
+            <div>
+              <input  required="required" class="form-control" type="text" placeholder="Celular" ng-model="entidad_crear.celular">
+            </div >
+              <div >
+                <input class="btn btn-primary  btn-block" type="submit" name="" value="Crear entidad">
+              </div>
+            
+        </form>
+    </div>
+
+
+
+  
+
+<table class="table">
+  <thead>
+
+
+    <tr >
+      <th scope="col">ID </th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Alias</th>
+      <th scope="col">Pastor</th>
+      <th scope="col">celular</th>
+    
+
+
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr ng-repeat="entidad in entidades">
+      
+      <td>{{entidad.rowid}}</td>
+      <td>{{entidad.nombres}}</td>
+      <td>{{entidad.alias}}</td>
+      <td>{{entidad.pastor}}</td>
+      <td>{{entidad.celular}}</td>
+      <td scope="col" class=" glyphicon glyphicon-pencil btn btn-primary" href="" ng-click="modentidad(entidad)"></td>
+      <td scope="col" class="glyphicon glyphicon-remove btn btn-danger" href="" ng-click="eliminarentidad(entidad)" ></td>
+    </tr>
+
+
+  
+   
+  </tbody>
+</table>
+<div ng-show="modentidades">
+    <h2>Modificar auditoria</h2>
+
+    <form ng-submit="actuentidad(entidad_editar)">
+
+
+      <table style="width: 100%;">
+        
+           <tr>
+             <td>Nombre :</td>
+             <td> <input  class="form-control" type="text"  placeholder="Nombre" ng-model="entidad_editar.nombres">  </td>
+           </tr>
+
+           <tr>
+             <td>Alias :</td>
+             <td><input class="form-control" type="text" placeholder="Alias" ng-model="entidad_editar.alias">
+              </td>
+           </tr>
+
+           <tr>
+             <td>Pastor :</td>
+             <td> <input  class="form-control" type="text" placeholder="Pastor" ng-model="entidad_editar.pastor"></td>
+           </tr>
+
+           <tr>
+             <td>Celular :</td>
+             <td> <input  class="form-control" type="text" placeholder="celular" ng-model="entidad_editar.celular">
+              </td>
+           </tr>
+
+
+            
+            
+       
+      
+
+      </table>
+
+          <div>
+              <input class="btn btn-primary  btn-block" type="submit" name="" value="Actualizar Entidad">
+           </div>
+            
+      
+      
+      
+      
+      
+    </form>
+  </div>
+
+
