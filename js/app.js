@@ -1,12 +1,31 @@
-angular.module('auditoriaApp', ['ui.router'])
+angular.module('auditoriaApp', [
+	'ngSanitize', 
+	'ngTouch',
+	'ngAnimate',
+	'ui.router', 
+	'ui.bootstrap',
+	'ui.select'
+])
 
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider, uiSelectConfig){
+	
+	
+	uiSelectConfig.theme = 'select2'
+	uiSelectConfig.resetSearchInput = true
+	
 
 	$stateProvider
 
 	.state('panel', {
 		url: '/panel',
+		controller: 'PanelCtrl',
 		templateUrl: 'templates/panel.html'
+	})
+
+	.state('login', {
+		url: '/login',
+		controller: 'LoginCtrl',
+		templateUrl: 'templates/login.html'
 	})
 
 	.state('panel.entidades', {
