@@ -26,6 +26,8 @@ angular.module('auditoriaApp')
                 "apellidos varchar(100)  DEFAULT NULL collate nocase," +
                 "sexo varchar(100)  NOT NULL," +
                 "tipo varchar(100)  NOT NULL," + // Auditor, Pastor, Tesorero
+                "distrito_id integer DEFAULT NULL," +
+                "iglesia_id integer DEFAULT NULL," +
                 "celular varchar(100)  NULL," +
                 "username varchar(100)  NOT NULL , " +  
                 "password varchar(100)  NOT NULL)" ;
@@ -130,14 +132,14 @@ sqlrespuestas = "CREATE TABLE IF NOT EXISTS respuestas (id integer," +
                 console.log(tx);
                 
                 tx.executeSql(sqlDistritos, [], function (tx, result) {
-                    console.log('Distritos Tabla creada');
+                    // console.log('Distritos Tabla creada');
                     defered.resolve('Distritos Tabla creada');
                 }, function(tx,error){
                     console.log("Distritos Tabla No se pudo crear", error.message);
                 })
                 
                 tx.executeSql(sqlIglesias, [], function (tx, result) {
-                    console.log('Iglesias Tabla creada');
+                    // console.log('Iglesias Tabla creada');
                     defered.resolve('Iglesias Tabla creada');
                 }, function(tx,error){
                     console.log("Iglesias Tabla No se pudo crear", error.message);
@@ -145,14 +147,14 @@ sqlrespuestas = "CREATE TABLE IF NOT EXISTS respuestas (id integer," +
 
 
                  tx.executeSql( sqlusuarios , [], function (tx, result) {
-                    console.log('usuarios Tabla creada');
+                    // console.log('usuarios Tabla creada');
                     defered.resolve('usuarios Tabla creada');
                 }, function(tx,error){
                     console.log("usuarios Tabla No se pudo crear", error.message);
                 })
 
                 tx.executeSql( sqlauditorias , [], function (tx, result) {
-                    console.log('auditorias Tabla creada');
+                    // console.log('auditorias Tabla creada');
                     defered.resolve('auditorias Tabla creada');
                 }, function(tx,error){
                     console.log("auditorias Tabla No se pudo crear", error.message);
@@ -160,14 +162,14 @@ sqlrespuestas = "CREATE TABLE IF NOT EXISTS respuestas (id integer," +
 
 
                 tx.executeSql( sqlLibMes , [], function (tx, result) {
-                    console.log('Libros mensuales Tabla creada');
+                    // console.log('Libros mensuales Tabla creada');
                     defered.resolve('Libros mensuales Tabla creada');
                 }, function(tx,error){
                     console.log("Libros mensuales Tabla No se pudo crear", error.message);
                 })
 
                 tx.executeSql( sqlLibSem , [], function (tx, result) {
-                    console.log('Libros Semanales Tabla creada');
+                    // console.log('Libros Semanales Tabla creada');
                     defered.resolve('Libros Semanales Tabla creada');
                 }, function(tx,error){
                     console.log("Libros Semanales Tabla No se pudo crear", error.message);
@@ -181,14 +183,14 @@ sqlrespuestas = "CREATE TABLE IF NOT EXISTS respuestas (id integer," +
                 })
 
                 tx.executeSql( sqlPagosDest , [], function (tx, result) {
-                    console.log('Pagos Destinos Tabla creada');
+                    // console.log('Pagos Destinos Tabla creada');
                     defered.resolve('Pagos Destinos Tabla creada');
                 }, function(tx,error){
                     console.log("Pagos Destinos Tabla No se pudo crear", error.message);
                 })
 
                 tx.executeSql( sqlSoportesMes , [], function (tx, result) {
-                    console.log('Soportes Mes Tabla creada');
+                    // console.log('Soportes Mes Tabla creada');
                     defered.resolve('Soportes Mes Tabla creada');
                 }, function(tx,error){
                     console.log("Soportes Mes Tabla No se pudo crear", error.message);
@@ -196,14 +198,14 @@ sqlrespuestas = "CREATE TABLE IF NOT EXISTS respuestas (id integer," +
 
 
                 tx.executeSql( sqlGatosMes , [], function (tx, result) {
-                    console.log('Gastos Mes Tabla creada');
+                    // console.log('Gastos Mes Tabla creada');
                     defered.resolve('Gastos Mes Tabla creada');
                 }, function(tx,error){
                     console.log("Gastos Mes Tabla No se pudo crear", error.message);
                 })
 
                 tx.executeSql( sqlpreguntas , [], function (tx, result) {
-                    console.log('preguntas Tabla creada');
+                    // console.log('preguntas Tabla creada');
                     defered.resolve('preguntas Tabla creada');
                 }, function(tx,error){
                     console.log("preguntas Tabla No se pudo crear", error.message);
@@ -211,7 +213,7 @@ sqlrespuestas = "CREATE TABLE IF NOT EXISTS respuestas (id integer," +
 
 
                    tx.executeSql( sqlrespuestas , [], function (tx, result) {
-                    console.log('respuestas Tabla creada');
+                    // console.log('respuestas Tabla creada');
                     defered.resolve('respuestas Tabla creada');
                 }, function(tx,error){
                     console.log("respuestas Tabla No se pudo crear", error.message);

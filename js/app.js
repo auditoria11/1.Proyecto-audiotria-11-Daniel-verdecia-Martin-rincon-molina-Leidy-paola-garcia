@@ -4,7 +4,17 @@ angular.module('auditoriaApp', [
 	'ngAnimate',
 	'ui.router', 
 	'ui.bootstrap',
-	'ui.select'
+	'ui.select',
+	'ui.grid',
+	'ui.grid.edit',
+	'ui.grid.resizeColumns',
+	'ui.grid.exporter',
+	'ui.grid.selection',
+	'ui.grid.cellNav',
+	'ui.grid.autoResize',
+	'ui.grid.pinning',
+	'ui.grid.expandable',
+	'ui.grid.moveColumns'
 ])
 
 .config(function($stateProvider, $urlRouterProvider, uiSelectConfig){
@@ -19,7 +29,12 @@ angular.module('auditoriaApp', [
 	.state('panel', {
 		url: '/panel',
 		controller: 'PanelCtrl',
-		templateUrl: 'templates/panel.html'
+		templateUrl: 'templates/panel.html',
+		resolve: {
+			USER: ['AuthServ', function(AuthServ){
+				return AuthServ.verificar_user_logueado();
+			}]
+		}
 	})
 
 	.state('login', {
@@ -32,6 +47,12 @@ angular.module('auditoriaApp', [
 		url: '/entidades',
 		controller: 'EntidadesCtrl',
 		templateUrl: 'templates/entidades.html'
+	})
+
+	.state('panel.libromensual', {
+		url: '/libromensual',
+		controller: 'libromensualctrl',
+		templateUrl: 'templates/libromes.html'
 	})
 
 	.state('panel.usuarios', {

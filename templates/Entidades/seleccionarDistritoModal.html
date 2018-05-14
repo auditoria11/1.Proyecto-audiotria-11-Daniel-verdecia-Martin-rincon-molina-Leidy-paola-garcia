@@ -1,0 +1,20 @@
+
+<div class="modal-body" id="modal-body" style="max-height: 500px; overflow: auto;">
+
+    <div ng-repeat="distrito in distritos" style="margin-bottom: 10px">
+        
+        <div style="background-color: #b2baf4; font-weight: 500; padding: 4px; padding-left: 10px; ">
+            {{ distrito.nombre }}
+        </div>
+        
+        <div>
+            <button ng-repeat="iglesia in distrito.iglesias" ng-click="seleccionarIglesia(iglesia)" class="btn btn-default">
+                {{ iglesia.alias }}
+            </button>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+</div>

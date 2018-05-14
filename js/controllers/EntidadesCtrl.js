@@ -1,15 +1,30 @@
-angular
-  .module("auditoriaApp")
+angular.module("auditoriaApp")
 
-  .controller("EntidadesCtrl", function($scope, ConexionServ, $filter) {
+.controller("EntidadesCtrl", function($scope, ConexionServ, $filter) {
     $scope.entidades 		= true;
     $scope.distrito_new 	= {};
-	$scope.modentidades 	= false;
-	$scope.verCrearDistrito = false;
-	$scope.usuarios 		= [];
+		$scope.modentidades 	= false;
+		$scope.verCrearDistrito = false;
+		$scope.usuarios 		= [];
 	
+		
+		
+		$scope.gridOptions = {
+			enableSorting: true,
+			enableFiltering: true,
+			columnDefs: [
+				{ field: 'nombre' },
+				{ field: 'alias' },
+				{ field: 'celular' },
+				{ field: 'tesorero_nombres' }
+			],
+			onRegisterApi: function( gridApi ) {
+				$scope.grid1Api = gridApi;
+			}
+		};
+		
 	
-    $scope.crear_distrito = function() {
+  $scope.crear_distrito = function() {
 		$scope.verCrearDistrito = !$scope.verCrearDistrito;
 	};
     $scope.cancelar_crear_distrito = function() {
@@ -80,6 +95,7 @@ angular
 
 		ConexionServ.query(consulta, []).then(function(result) {
 			$scope.iglesias = result;
+			$scope.gridOptions.data = result;
 		}, function(tx) {
 			console.log("Error no es posbile traer usuarios", tx);
 		});
@@ -91,7 +107,6 @@ angular
 	  			"INNER JOIN usuarios p ON p.tipo='Pastor' and p.rowid=d.pastor_id";
 
     	ConexionServ.query(consulta, []).then(function(result) {
-		  console.log(result);
           $scope.distritos = result;
         }, function(tx) {
           console.log("Error no es posbile traer Iglesias", tx);
@@ -189,6 +204,68 @@ angular
 					console.log("Dato original no insertado", tx);
 				});
 				
+				
+				
+				// Distritos
+				
+				consulta = "INSERT INTO distritos(nombre, alias, zona, pastor_id) VALUES(?,?,?,?) ";
+				ConexionServ.query(consulta, ['TAME ORIENTAL', 'TAM-ORI', 'TAME',  1]).then(function(result) {
+		
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
+				
+				ConexionServ.query(consulta, ['TAME CENTRAL', 'TAM-CEN', 'TAME',  3]).then(function(result) {
+		
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
+				
+				ConexionServ.query(consulta, ['EMMANUEL TAME', 'EMM-TAME', 'TAME',  5]).then(function(result) {
+		
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
+				
+				
+				// Iglesias
+				
+				consulta = "INSERT INTO iglesias(nombre, alias, distrito_id) VALUES(?,?,?) ";
+				ConexionServ.query(consulta, ['EMAUS', 'EMAUS', 2]).then(function(result) {
+		
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
+				
+				ConexionServ.query(consulta, ['HEBRÓN', 'HEBRÓN', 2]).then(function(result) {
+		
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
+				
+				ConexionServ.query(consulta, ['LAS BRISAS DE SATENA', 'BRISAS', 2]).then(function(result) {
+		
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
+				
+				ConexionServ.query(consulta, ['EMMANUEL', 'EMMANUEL', 3]).then(function(result) {
+		
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
+				
+				ConexionServ.query(consulta, ['EFESO', 'EFESO', 1]).then(function(result) {
+		
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
+				
+				ConexionServ.query(consulta, ['EBENEZER', 'EBENEZER', 1]).then(function(result) {
+		
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
 				
 			}
 			

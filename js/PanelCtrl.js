@@ -1,54 +1,38 @@
 angular.module('auditoriaApp')
 
-.controller('PanelCtrl', function($scope, ConexionServ){
+.controller('PanelCtrl', function($scope, ConexionServ, $uibModal, USER, AuthServ){
     
+    $scope.USER = USER;
+    
+    console.log('USER en Panel', $scope.USER);
     
     ConexionServ.createTables();
     
-    if (localStorage.logueado){
-        if (localStorage.logueado == 'true'){
-            $scope.user = JSON.parse(localStorage.user);
-            console.log($scope.user);
-            
-        }else{
-            $state.go('login')
-        }
+    
+    
+    $scope.seleccionarDistrito = function () {
+        var modal = $uibModal.open({
+            templateUrl: '../templates/Entidades/seleccionarDistritoModal.html',
+            size: 'lg',
+            resolve: {
+                USER: function () {
+                    return $scope.USER;
+                }
+            },
+            controller: 'SeleccionarDistritoModalCtrl'
+        });
+        
+        modal.result.then(function (usuario_new) {
+            $scope.USER = usuario_new;
+        });
+    }
+    
+    
+    $scope.cerrar_sesion = function(){
+        AuthServ.cerrar_sesion();
     }
     
     
     
 })
 
-
-
-.controller('LoginCtrl', function($scope, $state, ConexionServ){
-    
-    $scope.user = {}
-    
-    
-    if (localStorage.logueado){
-        if (localStorage.logueado == 'true'){
-            $state.go('panel')
-        }
-    }
-    
-    $scope.entrar = function(user){
-        
-        consulta = 'SELECT * FROM users WHERE username=? and password=?';
-        
-        ConexionServ.query(consulta, [user.username]).then(function(){
-            
-        })
-        
-        if(user.username == 'admin' && user.password == '123'){
-            localStorage.logueado = true
-            localStorage.user = JSON.stringify(user);
-            $state.go('panel')
-        }else{
-            alert('Datos incorrectos');
-        }
-        
-    }
-    
-    
-})

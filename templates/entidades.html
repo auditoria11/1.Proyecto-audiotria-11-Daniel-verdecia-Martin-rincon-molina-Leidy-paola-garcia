@@ -114,8 +114,8 @@
 						<thead>
 							<tr>
 								<th scope="col">ID </th>
-								<th scope="col">Nombre</th>
-								<th scope="col">Alias</th>
+								<th scope="col">Año</th>
+								<th scope="col">Mes</th>
 								<th scope="col">Pastor</th>
 								<th scope="col">celular</th>
 							</tr>
@@ -163,6 +163,9 @@
 			<div class="box-content row">
 				
 				<div class="col-sm-12">
+					
+					
+					<div ui-grid="gridOptions" ></div>
 					
 					
 					<div ng-show="verCrearDistrito" class="row" style="margin-bottom: 50px">
@@ -243,7 +246,7 @@
 					</div>
 	
 					
-					<button class="btn btn-primary" ng-show="!verCrearDistrito" ng-click="crear_distrito()">Crear distrito</button>
+					<button class="btn btn-primary" ng-show="!verCrearDistrito" ng-click="crear_distrito()">Crear iglesia</button>
 						
 					<table class="table">
 						<thead>
