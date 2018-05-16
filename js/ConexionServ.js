@@ -28,6 +28,7 @@ angular.module('auditoriaApp')
                 "tipo varchar(100)  NOT NULL," + // Auditor, Pastor, Tesorero
                 "distrito_id integer DEFAULT NULL," +
                 "iglesia_id integer DEFAULT NULL," +
+                "auditoria_id integer DEFAULT NULL," +
                 "celular varchar(100)  NULL," +
                 "username varchar(100)  NOT NULL , " +  
                 "password varchar(100)  NOT NULL)" ;

@@ -82,6 +82,8 @@ angular.module("auditoriaApp")
 
 		ConexionServ.query(consulta, []).then(function(result) {
 			$scope.usuarios = result;
+			console.log(result);
+
 		}, function(tx) {
 			console.log("Error no es posbile traer usuarios", tx);
 		});
@@ -173,6 +175,7 @@ angular.module("auditoriaApp")
    		ConexionServ.query(consulta, []).then(function(result) {
 			if (result.length == 0) {
 				
+				// USUARIOS
 				consulta = "INSERT INTO usuarios(nombres, apellidos, username, password, tipo, sexo) VALUES(?,?,?,?,?,?) ";
 				ConexionServ.query(consulta, ['JORGE', 'CELEDON', 'jorge',  123, 'Pastor', 'M']).then(function(result) {
 		
@@ -267,6 +270,7 @@ angular.module("auditoriaApp")
 					console.log("Dato original no insertado", tx);
 				});
 				
+
 			}
 			
         }, function(tx) {

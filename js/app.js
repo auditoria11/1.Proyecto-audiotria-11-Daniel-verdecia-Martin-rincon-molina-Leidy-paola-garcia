@@ -49,12 +49,6 @@ angular.module('auditoriaApp', [
 		templateUrl: 'templates/entidades.html'
 	})
 
-	.state('panel.libromensual', {
-		url: '/libromensual',
-		controller: 'libromensualctrl',
-		templateUrl: 'templates/libromes.html'
-	})
-
 	.state('panel.usuarios', {
 		url: '/usuarios',
 		controller: 'usuariosctrl',
@@ -67,6 +61,8 @@ angular.module('auditoriaApp', [
 		templateUrl: 'templates/auditorias.html'
 	})
 
+
+
 	.state('panel.preguntas', {
 		url: '/preguntas',
 		controller: 'preguntasctrl',
@@ -77,6 +73,12 @@ angular.module('auditoriaApp', [
 		url: '/respuestas',
 		controller: 'respuestasctrl',
 		templateUrl: 'templates/respuestas.html'
+	})
+
+	.state('panel.libromes', {
+		url: '/libromes',
+		controller: 'LibroMesCtrl',
+		templateUrl: 'templates/libromes.html'
 	})
 
 

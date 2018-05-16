@@ -1,7 +1,6 @@
 angular.module('auditoriaApp')
 
-.controller('auditoriasctrl' , function($scope, ConexionServ, $filter){
-
+.controller('auditoriasctrl' , function($scope, ConexionServ, $filter, AuthServ){
 
 	$scope.vercrearauditorias = function(){
 
@@ -25,20 +24,21 @@ angular.module('auditoriaApp')
 	ConexionServ.createTables();
 
 
-	 $scope.Insertentidadauditoria = function(auditoria_crear){
+	 $scope.InsertEntidadAuditoria = function(auditoria_crear){
 
-	 	auditoria_crear.fecha = new Date();
-		auditoria_crear.fecha = ' ' + auditoria_crear.fecha.getFullYear() + ' / ' + auditoria_crear.fecha.getMonth() + ' / ' + auditoria_crear.fecha.getDate() ;
+	 	fecha_fix = new Date(auditoria_crear.fecha);
+		fecha_fix = '' + auditoria_crear.fecha.getFullYear() + '/' + auditoria_crear.fecha.getMonth() + '/' + auditoria_crear.fecha.getDate() ;
 
-		auditoria_crear.hora = new Date();
-		auditoria_crear.hora = ' ' + auditoria_crear.hora.getHours() + ' : ' + auditoria_crear.hora.getMinutes() + ' : ' + auditoria_crear.hora.getSeconds() ;
+		hora_fix = new Date(auditoria_crear.hora);
+		hora_fix = '' + auditoria_crear.hora.getHours() + ':' + auditoria_crear.hora.getMinutes() + ':' + auditoria_crear.hora.getSeconds() ;
 	  	
 
 
-	 	consulta ="INSERT INTO auditorias(fecha, hora, entidad) VALUES(?, ?, ?) "
-	   ConexionServ.query(consulta,[auditoria_crear.fecha, auditoria_crear.hora, auditoria_crear.entidad]).then(function(result){
+	 	consulta ="INSERT INTO auditorias(fecha, hora, iglesia_id) VALUES(?, ?, ?) "
+	   ConexionServ.query(consulta,[fecha_fix, hora_fix, auditoria_crear.iglesia.rowid]).then(function(result){
 
-           console.log('Auditoria creada', result)
+           console.log('Auditoria creada', result);
+           $scope.verMostrarAuditoriasTabla();
            alert('Auditoria creada exitosamente')
 
 	   } , function(tx){
@@ -50,40 +50,27 @@ angular.module('auditoriaApp')
 
 	 } 
 
-	 $scope.vermostrarauditoriastabla = function(){
+	 $scope.verMostrarAuditoriasTabla = function(){
 
 
-	   
-	   ConexionServ.query('SELECT  a.*, a.rowid, e.nombres, e.alias  from auditorias a INNER JOIN entidades e ON a.entidad = e.rowid  ', []).then(function(result){
-
+	   ConexionServ.query('SELECT  a.*, a.rowid, i.nombre, i.alias  from auditorias a INNER JOIN iglesias i ON a.iglesia_id = i.rowid  ', []).then(function(result){
 	          $scope.auditorias = result;
-
-			   
-
-				  
-                      
-
-		
-
-
-		   } , function(tx){
-
+		} , function(tx){
 		   	console.log('Error no es posbile traer auditorias' , tx)
-
-		   })
-
+		})
 
 
 
-	    ConexionServ.query('SELECT *, rowid from entidades', []).then(function(result){
 
-	          $scope.entidades = result;
+	    ConexionServ.query('SELECT i.*, i.rowid, d.nombre as nombre_distrito, d.alias as alias_distrito from iglesias i INNER JOIN distritos d ON d.rowid=i.distrito_id', []).then(function(result){
 
-		   } , function(tx){
+			$scope.iglesias = result;
 
-		   	console.log('Error no es posbile traer Entidades' , tx)
+		} , function(tx){
 
-		   });
+	   		console.log('Error no es posbile traer Entidades' , tx)
+
+		});
 	 
 
 
@@ -93,10 +80,12 @@ angular.module('auditoriaApp')
 
 
   
-	 $scope.vermostrarauditoriastabla();
+	 $scope.verMostrarAuditoriasTabla();
 
 
-
+	$scope.agruparPorDistrito = function (item){
+        return item.nombre_distrito;
+    };
 	
 
 
@@ -142,6 +131,26 @@ angular.module('auditoriaApp')
 	   });
 
 	 } 
+
+
+	$scope.seleccionarAuditoria = function(auditoria) {
+		ConexionServ.query('UPDATE usuarios SET auditoria_id=? WHERE rowid=? ', [ auditoria.rowid, $scope.USER.rowid ]).then(function(result) {
+			$scope.USER.auditoria_id 		= auditoria.rowid;
+
+			AuthServ.update_user_storage($scope.USER).then(function(usuario){
+				
+			});
+			
+			
+		});
+	}
+
+
+
+	$scope.InsertarMesAño = function(){
+   
+	};
+
 
 
 

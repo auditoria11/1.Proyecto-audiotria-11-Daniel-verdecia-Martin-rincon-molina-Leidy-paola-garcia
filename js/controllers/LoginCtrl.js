@@ -122,6 +122,18 @@ angular.module('auditoriaApp')
 				}, function(tx) {
 					console.log("Dato original no insertado", tx);
 				});
+
+
+
+				
+				// AUDITORIAS
+				consulta = "INSERT INTO auditorias(fecha, hora, iglesia_id) VALUES(?,?,?) ";
+				ConexionServ.query(consulta, ['01/01/2015', '10:10:00am', 1]).then(function(result) {
+					console.log('Audi prueba insertada');
+				}, function(tx) {
+					console.log("Dato original no insertado", tx);
+				});
+				
 				
 			}
 			
